@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+  Gross Salary: <input type="text" id="salary" name="salary"><br>
+  Tax Rate: <input type="text" id="taxRate" name="taxRate"><br>
+  <input type="button" value="Calculate Salary" onclick="calculateSalary()">
+</form> 
+<p>Net Salary: <span id="netSalary"></span></p>
+<p>Tax: <span id="tax"></span></p>
+<p>Unemployment Insurance: <span id="unemploymentInsurance"></span></p>
+<p>Pension Insurance: <span id="pensionInsurance"></span></p>
+
+<script>
+  function calculateSalary() {
+    var grossSalary = document.getElementById("salary").value;
+    var taxRate = document.getElementById("taxRate").value;
+    var tax = grossSalary * taxRate / 100.0;
+    var unemploymentInsurance = grossSalary * 0.019;
+    var pensionInsurance = grossSalary * 0.0635;
+    var netSalary = grossSalary - tax - unemploymentInsurance - pensionInsurance;
+
+    document.getElementById("netSalary").innerHTML = netSalary;
+    document.getElementById("tax").innerHTML = tax;
+    document.getElementById("unemploymentInsurance").innerHTML = unemploymentInsurance;
+    document.getElementById("pensionInsurance").innerHTML = pensionInsurance;
+  }
+</script>
+
+</body>
+</html>
